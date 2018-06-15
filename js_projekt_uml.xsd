@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="https://www.w3schools.com"
+xmlns="https://www.w3schools.com"
+elementFormDefault="qualified">
+
+<xs:complexType name="punktType">
+	<xs:sequence>
+		<xs:element name="lon" type="xs:real" minExclusive="-180" maxInclusive="180"/>
+		<xs:element name="lat" type="xs:real" minExclusive="-90" maxInclusive="180"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pomnikPrzyrodyType">
+	<xs:sequence>
+		<xs:element name="nazwa" type="xs:string"/>
+		<xs:element name="dataUstanowienia" type="xs:date"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="glaz">
+	<xs:complexContent>
+		<xs:extension base="pomnikPrzyrodyType">
+			<xs:sequence>
+				<xs:element name="objetosc" type="xs:integer"/>
+				<xs:element name="polozenie" type="punktType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+<xs:element name="pomikPrzyrody" type="pominkPrzyrodyType"/>
+
+</xs:schema>

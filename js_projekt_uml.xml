@@ -1,0 +1,49 @@
+<pomnikiPrzyrody>
+	<glaz>
+		<nazwa>Wielki Głaz</nazwa>
+		<dataUstanowienia>2002-01-02</dataUstanowienia>
+		<objetosc>10</objetosc>
+		<polozenie>
+			<lon>19.55</lon>
+			<lat>20</lat>
+		</polozenie>
+	</glaz>
+</pomnikiPrzyrody>
+
+<!--
+xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="pomnikiPrzyrodyType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="pomnikPrzyrody" type="pomnikPrzyrodyType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pomnikPrzyrodyType">
+        <xs:sequence>
+            <xs:element name="nazwa" type="xs:string"/>
+            <xs:element name="dataUstanowienia" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="pomnikiPrzyrody" type="xs:pomnikPrzyrodyType"/>
+	
+	<xs:element name="glaz" type="xs:pomnikPrzyrodyType"/
+	
+	<xs:complexType name="lonType">
+	<xs:restriction base="xs:real">
+		<xs:minExclusive="-180"/>
+		<xs:maxInclusive="180"/>
+	</xs:restriction>
+</xs:complexType>
+
+<xs:complexType name="latType">
+	<xs:restriction base="xs:real">
+		<xs:minExclusive="-180"/>
+		<xs:maxInclusive="180"/>
+	</xs:restriction>
+</xs:complexType>
+	
+</xs:schema>
+-->
+	
