@@ -2,48 +2,65 @@
 	<glaz>
 		<nazwa>Wielki Głaz</nazwa>
 		<dataUstanowienia>2002-01-02</dataUstanowienia>
-		<objetosc>10</objetosc>
+		<objetosc>100</objetosc>
 		<polozenie>
-			<lon>19.55</lon>
-			<lat>20</lat>
+			<punkt>
+				<lon>19.558</lon>
+				<lat>50.786</lat>
+			</punkt>
 		</polozenie>
 	</glaz>
-</pomnikiPrzyrody>
-
-<!--
-xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-    <xs:complexType name="pomnikiPrzyrodyType">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="pomnikPrzyrody" type="pomnikPrzyrodyType"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="pomnikPrzyrodyType">
-        <xs:sequence>
-            <xs:element name="nazwa" type="xs:string"/>
-            <xs:element name="dataUstanowienia" type="xs:date"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:element name="pomnikiPrzyrody" type="xs:pomnikPrzyrodyType"/>
-	
-	<xs:element name="glaz" type="xs:pomnikPrzyrodyType"/
-	
-	<xs:complexType name="lonType">
-	<xs:restriction base="xs:real">
-		<xs:minExclusive="-180"/>
-		<xs:maxInclusive="180"/>
-	</xs:restriction>
-</xs:complexType>
-
-<xs:complexType name="latType">
-	<xs:restriction base="xs:real">
-		<xs:minExclusive="-180"/>
-		<xs:maxInclusive="180"/>
-	</xs:restriction>
-</xs:complexType>
-	
-</xs:schema>
--->
-	
+	<glaz>
+		<nazwa>Mały Głaz</nazwa>
+		<dataUstanowienia>2003-10-02</dataUstanowienia>
+		<objetosc>50</objetosc>
+		<polozenie>
+			<punkt>
+				<lon>19.658</lon>
+				<lat>50.886</lat>
+			</punkt>
+		</polozenie>
+	</glaz>
+	<aleja>
+		<nazwa>Aleja Lipowa</nazwa>
+		<dataUstanowienia>2006-05-05</dataUstanowienia>
+		<przebieg>
+			<punkt>
+				<lon>19.677</lon>
+				<lat>51.456</lat>
+			</punkt>
+			<punkt>
+				<lon>19.666</lon>
+				<lat>51.345</lat>
+			</punkt>
+			<punkt>
+				<lon>19.333</lon>
+				<lat>51.123</lat>
+			</punkt>
+		</przebieg>
+	</aleja>
+	<drzewo>
+		<nazwa>Starodawny Buk</nazwa>
+		<dataUstanowienia>2018-06-01</dataUstanowienia>
+		<gatunek>buk</gatunek>
+		<wiek>550</wiek>
+		<polozenie>
+			<punkt>
+				<lon>19.187</lon>
+				<lat>51.178</lat>
+			</punkt>
+		</polozenie>
+	</drzewo>
+	<drzewo>
+		<nazwa>Piękny Jesion</nazwa>
+		<dataUstanowienia>2016-06-01</dataUstanowienia>
+		<gatunek>jesion</gatunek>
+		<wiek>388</wiek>
+		<polozenie>
+			<punkt>
+				<lon>19.587</lon>
+				<lat>51.878</lat>
+			</punkt>
+		</polozenie>
+	</drzewo>
+</pomnikiPrzyrody>

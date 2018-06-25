@@ -1,33 +1,106 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-targetNamespace="https://www.w3schools.com"
-xmlns="https://www.w3schools.com"
-elementFormDefault="qualified">
+<?xml version="1.0"?>
 
-<xs:complexType name="punktType">
-	<xs:sequence>
-		<xs:element name="lon" type="xs:real" minExclusive="-180" maxInclusive="180"/>
-		<xs:element name="lat" type="xs:real" minExclusive="-90" maxInclusive="180"/>
-	</xs:sequence>
-</xs:complexType>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<xs:complexType name="pomnikPrzyrodyType">
-	<xs:sequence>
-		<xs:element name="nazwa" type="xs:string"/>
-		<xs:element name="dataUstanowienia" type="xs:date"/>
-	</xs:sequence>
-</xs:complexType>
+	<xs:element name="pomnikiPrzyrody" type="pomnikiPrzyrodyType"/>
 
-<xs:complexType name="glaz">
-	<xs:complexContent>
-		<xs:extension base="pomnikPrzyrodyType">
-			<xs:sequence>
-				<xs:element name="objetosc" type="xs:integer"/>
-				<xs:element name="polozenie" type="punktType"/>
-			</xs:sequence>
-		</xs:extension>
-	</xs:complexContent>
-</xs:complexType>
+	<xs:complexType name="pomnikPrzyrodyType">
+		<xs:sequence>
+			<xs:element name="nazwa" type="xs:string"/>
+			<xs:element name="dataUstanowienia" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
 
-<xs:element name="pomikPrzyrody" type="pominkPrzyrodyType"/>
+	<xs:complexType name="pomnikiPrzyrodyType">
+		<xs:sequence>
+			<xs:element name="glaz" type="glazType" maxOccurs="unbounded"/>
+			<xs:element name="aleja" type="alejaType" maxOccurs="unbounded"/>
+			<xs:element name="drzewo" type="drzewoType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="glazType">
+		<xs:complexContent>
+			<xs:extension base="pomnikPrzyrodyType">
+				<xs:sequence>
+					<xs:element name="objetosc">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:minInclusive value="2"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="polozenie" type="polozenieType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="alejaType">
+		<xs:complexContent>
+			<xs:extension base="pomnikPrzyrodyType">
+				<xs:sequence>
+					<xs:element name="przebieg" type="przebiegType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="drzewoType">
+		<xs:complexContent>
+			<xs:extension base="pomnikPrzyrodyType">
+				<xs:sequence>
+					<xs:element name="gatunek" type="gatunekType"/>
+					<xs:element name="wiek">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:minInclusive value="100"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>	
+					<xs:element name="polozenie" type="polozenieType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:simpleType name="gatunekType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="jesion|buk|lipa|brzoza|świerk|sosna"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="punktType">
+		<xs:sequence>
+			<xs:element name="lon">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minExclusive value="-180"/>
+						<xs:maxInclusive value="180"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="lat">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-90"/>
+						<xs:maxInclusive value="90"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="polozenieType">
+		<xs:sequence>
+			<xs:element name="punkt" type="punktType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="przebiegType">
+		<xs:sequence>
+			<xs:element name="punkt" type="punktType" maxOccurs="unbounded" minOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
 
 </xs:schema>
